@@ -1,0 +1,79 @@
+# IF
+
+- takes an expression that evaluates to either ```true``` or ```false```.
+- if it's ```true``` excutes the block of code following if
+- if not, it skips and goes on to the next thing
+- when you are done with ```if```, finish it by typing ```end```
+- or finish it by having it at the last
+```rb
+if 3 < 5
+    print "3 is less than 5"
+end
+
+problem = true
+print "oh....." if problem
+```
+
+
+# Else
+- ```if xxx```, ```else yyy```
+- if this expression is true, run this code blockl otherwise run the code after the else. 
+
+```rb
+if 1 > 2
+    print "false. so no print"
+else 
+    print "it will be printed"
+end
+```
+
+# Elsif
+- to add any number of alternatives to an ```if```/```else``` statement
+
+```rb
+if x < y
+    puts "x < y"
+elsif x > y
+    puts " x > y"
+else 
+    puts "x = y"
+end
+```
+
+# Unless
+- check if something is *false* 
+``` rb
+unless sleepy
+    print "study"
+else 
+    print "go to bed"
+end
+```
+- the block can be finished by having unless at the end
+```rb problem = false
+print "good to go" unless problem 
+```
+
+# Equal or Not 
+- use the comparator ```==``` : is equal to
+``` rb
+x = 2
+y = 2
+if x == y
+    print "it's equal"
+end
+```
+
+- ``` !=``` : is *not* equal to
+
+# Less Than or Grater Than
+- less than: ```<```
+- less than or equal to: ```<=```
+- greater than: ```>```
+- greater than or equal to: ```>=```
+
+# And, Or, Not
+- and ```&&```: result in boolean value
+- inclusive or ```||```: evaluates to true when one or the other or both expressions are true.
+- ```!``` makes true values false and vice-versa
+

@@ -15,7 +15,7 @@
 
 # 'puts' and 'print'
 - both for priting what you give it to the screen
- ```
+ ```rb
 puts "hello world"
 print "hello"
 print "world"
@@ -34,3 +34,26 @@ print "world"
 # Comments
 - ```#``` for sigle line comment
 - ```=begin```,  ```=end``` for multi line
+
+# Getting input
+- ```gets```: gets the input from the user
+    - it adds the blank line(new line) after each bit of input
+    - ``` chomp```: to remove that extra line 
+
+```rb
+print "what is your name?"
+name = gets.chomp
+puts "your name is #{name}!"
+```
+- use the string interpolation ```#{ variable_name }```
+
+# Formatting with String Methods
+- ```capitalize```: capitalizes the *first* letter of a string and makes the rest of the letters lower case. 
+- ```!```: modifies the value contained within the original variable.
+```rb
+last_name = 'lee'
+last_name_cap = last_name.capitalize
+# assign capitalized value to a new variable
+last_name.capitalize! 
+# ! modifies the value within the variable itself
+```
