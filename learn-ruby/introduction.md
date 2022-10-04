@@ -30,6 +30,17 @@ print "world"
 - ```.reverse```: returns the backwards version of the string
 - ```.upcdase```: returns the string in all caps
 - ```.downcase```: returns the string in all lower case
+- ```.include?``` : return true or false
+    - ```?``` evalute to the boolean values)
+     ```rb 
+    if user_input.includes? "s"
+        # do something
+    end
+    ```
+- ```.gsub!(param1, param2)```: global substitution. finding the param1 and replace it with param2. ```!``` for keeping the value in-place.
+   ```rb
+   string_to_change.gsub!(/s/, 'the')
+    ```
 
 # Comments
 - ```#``` for sigle line comment

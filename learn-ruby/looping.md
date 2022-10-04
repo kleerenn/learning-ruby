@@ -1,0 +1,89 @@
+# While
+- f a certain condition is true and ```while``` it is, the loop keeps running. 
+```rb
+i = 0
+while i < 5
+    puts i
+    i += 1
+end
+```
+
+# Until
+- like a backward ```while```
+```rb
+i = 0
+until i == 6
+    puts i
+    i += 1
+end
+```
+
+# Assignment Operatoers
+- ```+=```, ```-=```, ```*=```. ```/=```
+- but there is no ```++``` or ```--``` 
+
+# For
+```rb
+for num in 1...10
+    puts num
+end
+```
+- use ```...``` or ```..``` in the range.
+    - ```for num in 1...10```: three dots means 'go up to but don't include 10"
+    - ```for num in 1..10``` : two dots to include the highest number in the range. 
+
+# Loop method
+- And iterator is a method that repeatedly invokes a block of code. 
+```rb 
+loop { print "hello world"}
+# infinitely print the string.
+```
+- ```{ }``` is interchangeable with the keyword ```do, end``` 
+```rb
+i = 0
+loop do
+    i += 1
+    print "#{i}"
+    break if i > 5 
+end
+```
+- ```break```: to break a loop as soon as its condition is met.
+
+# Next
+- used to skip over certain steps in the loop. 
+```rb
+for i in 1..5
+    next if i % 2 == 0
+    print i
+end
+```
+
+# .each Iterator
+- can apply and expression to each element of an object.
+```rb
+object.each { |item|
+    print "#{item}"
+}
+
+# item is an variable name for each element.
+
+# or 
+
+object.each do |item|
+    print "#{item}"
+end
+```
+
+# .times Iterator
+- to perform a tack on each item in an object a specified number of times.
+```rb
+3.times{ print "ruby" }
+# rubyrubyruby
+```
+
+# .split
+- it takes in a string and returns an array. 
+- will divide the string wherever it sees the param, called a delimiter. 
+```rb
+test.split(",")
+```
