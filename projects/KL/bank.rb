@@ -8,12 +8,3 @@ User can transfer money to other relatives
 Primary user can ONLY see who has the most and least money
 Primary user can delete relatives from the account
 =end
-
-my_array = ["raindrops", :kettles, "whiskers", :mittens, :packages]
-
-# Add your code below!
-symbol_filter = lambda {|a| a.is_a? Symbol }
-
-symbols = my_array.select(&symbol_filter)
-
-puts symbols
