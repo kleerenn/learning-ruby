@@ -144,6 +144,13 @@ Prompt.show_start_message
 option = gets.chomp.downcase
 execute_option_for_new_user(option)
 
-Prompt.show_menu_for_user
-bank_menu = gets.chomp[0,1]
-execute_option_for_user(bank_menu)
+loop do
+    Prompt.show_menu_for_user
+    bank_menu = gets.chomp[0,1]
+    if bank_menu != '1' && bank_menu != '2' && bank_menu != '3'
+        break
+    end
+    execute_option_for_user(bank_menu)
+    
+end
+
