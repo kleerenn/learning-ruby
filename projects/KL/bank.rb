@@ -12,19 +12,21 @@ Primary user can delete relatives from the account
 module Utilities
     def validate_balance(balance)
         valid = true
-        if balance.to_i < 0 || balance.is_a?(String) 
+        if balance < 0 
             puts "it's less than 0 or string!!!!!"
             valid = false
         end
+        return valid
     end
 
     def validate_ssn(ssn)
-        puts ssn
+        # TODO: reg pattern
         valid = true
-        if ssn.to_s != 4 || ssn.is_a?(String)
-            puts "wrong ssn"
+        digits = Math.log10(ssn).to_i + 1
+        if digits != 10
             valid = false
         end
+        return valid
     end
 
 end
@@ -36,14 +38,13 @@ module Prompt
 
     def get_new_account_info
         puts "Enter your name: "
-        name = gets.chomp
+        name = gets.chomp.to_s
 
         puts "Enter amount of money for initial deposit:"
-        balance = gets.chomp
+        balance = gets.chomp.to_i
 
-        puts "Enter the last 4 digit of SSN:"
-        ssn = gets.chomp
-
+        puts "Enter the SSN *NUMBERS ONLY* :"
+        ssn = gets.chomp.to_i
         return { name: name, balance: balance, ssn: ssn }
     end
 end
@@ -56,19 +57,22 @@ include Prompt
 $accounts = []
 class Account
     @@id = 0
+    attr_accessor :name, :balance, :ssn
 
     def initialize(name, balance, ssn)
-        @name = name
-        @balance = balance
-        @ssn = ssn
+        self.name = name
+        self.balance = balance
+        self.ssn = ssn
         @@id += 1
     end
 
-    def view_account
-    end
+    # def balance
+    #     self.balance
+    # end
 
-    def add_balance
-    end
+    # def balance=(balance)
+    #     self.balance += balance
+    # end
 
     def transfer_money
     end
@@ -79,28 +83,25 @@ class Account
     def add_users
     end
 
-    def create_account
+    def view_info
+        puts "Name: #{self.name}, Balance: #{self.balance}, SSN: #{self.ssn}"
     end
 
 end
 
 def create_account(name, balance, ssn)
-    puts "Your input is #{name}, #{balance}, #{ssn}"
-
     valid_balance = Utilities.validate_balance(balance)
     valid_ssn = Utilities.validate_ssn(ssn)
-   
     if !valid_balance || !valid_ssn
         puts "Invalid input - can't create an account."
+        return
     end
-
     account = Account.new(name, balance, ssn)
-    # $account.push(account)
+    puts "New account is created! #{account.view_info}"
 end
 
 
 def execute_option(option)
-    
     case option
         when 'y'
             info = Prompt.get_new_account_info
