@@ -47,6 +47,24 @@ module Prompt
         ssn = gets.chomp.to_i
         return { name: name, balance: balance, ssn: ssn }
     end
+
+    def show_invalid_message
+        puts "Invaid input!"
+    end
+
+    def show_menu_for_user
+        puts "What do you want to do?:
+        1. View balance
+        2. Add balance
+        3. Withrawl money"
+    end
+
+    def get_deposit
+        puts "Enter the amount money you want to deposit"
+        deposit = gets.chomp.to_i
+        return deposit
+    end
+
 end
 
 
@@ -54,7 +72,8 @@ end
 include Utilities
 include Prompt
 
-$accounts = []
+$account
+
 class Account
     @@id = 0
     attr_accessor :name, :balance, :ssn
@@ -66,21 +85,16 @@ class Account
         @@id += 1
     end
 
-    # def balance
-    #     self.balance
-    # end
-
-    # def balance=(balance)
-    #     self.balance += balance
-    # end
-
-    def transfer_money
-    end
-
     def withrawl_money
     end
 
-    def add_users
+    def add_balance(deposit)
+        valid = Utilities.validate_balance(deposit)
+        if !valid
+            Prompt.show_invalid_message
+            return
+        end
+        self.balance += deposit
     end
 
     def view_info
@@ -93,30 +107,43 @@ def create_account(name, balance, ssn)
     valid_balance = Utilities.validate_balance(balance)
     valid_ssn = Utilities.validate_ssn(ssn)
     if !valid_balance || !valid_ssn
-        puts "Invalid input - can't create an account."
+        Prompt.show_invalid_message
         return
     end
-    account = Account.new(name, balance, ssn)
-    puts "New account is created! #{account.view_info}"
+    $account = Account.new(name, balance, ssn)
+    puts "New account is created! >> #{$account.view_info}"
 end
 
 
-def execute_option(option)
+def execute_option_for_new_user(option)
     case option
         when 'y'
             info = Prompt.get_new_account_info
-            puts info
             create_account(info[:name],info[:balance], info[:ssn])    
         else 
-            puts "Not a valid answer"
+            Prompt.show_invalid_message
+    end
+end
+def execute_option_for_user(option)
+    case option
+        when '1'
+            puts "You have $#{$account.balance} in your account."
+        when '2'
+            deposit = Prompt.get_deposit
+            $account.add_balance(deposit)
+            puts "Success. You have $#{$account.balance} in your account."
+        when '3'   
+            puts "chose 3 - withdrawl"
+        else 
+            Prompt.show_invalid_message
     end
 end
 
-
-
-
-#####
-
 Prompt.show_start_message
+
 option = gets.chomp.downcase
-execute_option(option)
+execute_option_for_new_user(option)
+
+Prompt.show_menu_for_user
+bank_menu = gets.chomp[0,1]
+execute_option_for_user(bank_menu)
