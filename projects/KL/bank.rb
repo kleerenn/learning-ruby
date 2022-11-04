@@ -56,13 +56,19 @@ module Prompt
         puts "What do you want to do?:
         1. View balance
         2. Add balance
-        3. Withrawl money"
+        3. Withdrawl money
+        
+        (Enter Q/q to exit)"
     end
 
     def get_deposit
         puts "Enter the amount money you want to deposit"
         deposit = gets.chomp.to_i
         return deposit
+    end
+
+    def show_remaining_balance(balance)
+        puts "You have $ #{balance} in your account!"
     end
 
 end
@@ -85,16 +91,22 @@ class Account
         @@id += 1
     end
 
-    def withrawl_money
-    end
-
-    def add_balance(deposit)
-        valid = Utilities.validate_balance(deposit)
+    def withdrawl_balance(balance)
+        valid = Utilities.validate_balance(balance)
         if !valid
             Prompt.show_invalid_message
             return
         end
-        self.balance += deposit
+        self.balance -= balance
+    end
+
+    def add_balance(balance)
+        valid = Utilities.validate_balance(balance)
+        if !valid
+            Prompt.show_invalid_message
+            return
+        end
+        self.balance += balance
     end
 
     def view_info
@@ -102,6 +114,7 @@ class Account
     end
 
 end
+
 
 def create_account(name, balance, ssn)
     valid_balance = Utilities.validate_balance(balance)
@@ -127,18 +140,21 @@ end
 def execute_option_for_user(option)
     case option
         when '1'
-            puts "You have $#{$account.balance} in your account."
+            puts Prompt.show_remaining_balance($account.balance)
         when '2'
             deposit = Prompt.get_deposit
             $account.add_balance(deposit)
-            puts "Success. You have $#{$account.balance} in your account."
-        when '3'   
-            puts "chose 3 - withdrawl"
+            puts Prompt.show_remaining_balance($account.balance)
+        when '3'  
+             deposit = Prompt.get_deposit
+            $account.withdrawl_balance(deposit)
+            puts Prompt.show_remaining_balance($account.balance) 
         else 
             Prompt.show_invalid_message
     end
 end
 
+# Start here
 Prompt.show_start_message
 
 option = gets.chomp.downcase
@@ -146,11 +162,10 @@ execute_option_for_new_user(option)
 
 loop do
     Prompt.show_menu_for_user
-    bank_menu = gets.chomp[0,1]
-    if bank_menu != '1' && bank_menu != '2' && bank_menu != '3'
+    bank_menu = gets.chomp[0,1].downcase
+     if bank_menu === 'q'
         break
     end
     execute_option_for_user(bank_menu)
-    
 end
 
