@@ -14,11 +14,11 @@ module Executor
     when '1'
       puts Prompt.show_remaining_balance($account.balance)
     when '2'
-      deposit = Prompt.get_deposit
+      deposit = Prompt.enter_deposit
       $account.add_balance(deposit)
       puts Prompt.show_remaining_balance($account.balance)
     when '3'
-      deposit = Prompt.get_deposit
+      deposit = Prompt.enter_deposit
       $account.withdrawl_balance(deposit)
       puts Prompt.show_remaining_balance($account.balance)
     else
