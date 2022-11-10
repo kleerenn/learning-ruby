@@ -28,7 +28,7 @@ module Prompt
         (Enter Q/q to exit)"
   end
 
-  def get_deposit
+  def enter_deposit
     puts 'Enter the amount money you want to deposit'
     gets.chomp.to_i
   end
