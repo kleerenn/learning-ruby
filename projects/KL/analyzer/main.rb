@@ -44,14 +44,11 @@ puts 'Enter 1 for multiply, 2 for addition, 3 for subtraction.'
 user_entry = gets.chomp
 
 if user_entry == '1'
-  puts 'multiply'
-  multiply(num_1, num_2)
+  puts "The first number multiplied by the second number is #{multiply(num_1, num_2)}}"
 elsif user_entry == '2'
-  puts 'addition'
-  add(num_1, num_2)
+	puts "The first number added to the second number is #{add(num_1, num_2)}}"
 elsif user_entry == '3'
-  puts 'subtraction'
-  subtract(num_1, num_2)
+	puts "The first number subtracted from the second number is #{subtract(num_1, num_2)}"
 end
 
 # puts "The first number multiplied by the second number is #{multiply(num_1, num_2)}}"
