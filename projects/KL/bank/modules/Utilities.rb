@@ -2,7 +2,7 @@ module Utilities
   def validate_balance(balance)
     valid = true
     if balance.negative?
-      puts "it's less than 0 or string!!!!!"
+      puts 'Less than 0 or string.'
       valid = false
     end
     valid
