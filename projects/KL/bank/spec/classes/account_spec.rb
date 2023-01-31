@@ -54,18 +54,20 @@ describe Account do
       described_class.new('lee', '10', '1231231234')
     end
 
-    context 'when given positive number' do
-      it { expect(my_account.withdrawl_balance(100)).to eq(-90) }
-    end
-    context 'when given float' do
-      it { expect(my_account.withdrawl_balance(1.5)).to eq(8.5) }
+    [
+      ['positive number', 100, -90],
+      ['positive number', 101, -91],
+      ['float', 1.5, 8.5],
+      ['negative integer', -4, nil]
+    ].each do |type_of_input, withdrawl_amount, new_balance|
+      context "when given #{type_of_input} input of #{withdrawl_amount}" do
+        it { expect(my_account.withdrawl_balance(withdrawl_amount)).to eq(new_balance) }
+      end
     end
 
     context 'when given negative number' do
       it {
-        expect do
-          my_account.withdrawl_balance(-100)
-        end.to output("Less than 0 or string.\nInvaid input!\n").to_stdout
+        expect { my_account.withdrawl_balance(-100) }.to output("Less than 0 or string.\nInvaid input!\n").to_stdout
       }
     end
   end
