@@ -3,7 +3,7 @@ module Prompt
     puts 'Hello, Would you like to create an account? (Y/n)'
   end
 
-  def get_new_account_info
+  def new_account_info
     puts 'Enter your name: '
     name = gets.chomp.to_s
 

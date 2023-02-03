@@ -2,7 +2,7 @@ module Executor
   def option_for_new_user(option)
     case option
     when 'y'
-      info = Prompt.get_new_account_info
+      info = Prompt.new_account_info
       create_account(info[:name], info[:balance], info[:ssn])
     else
       Prompt.show_invalid_message
