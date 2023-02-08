@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../classes/Account'
 require_relative '../../modules/Utilities'
 
@@ -5,7 +7,6 @@ puts 'hello!'
 
 describe Account do
   describe '#initialize' do
-    # my_account = Account.new('karen', '100','1231231234')
     context 'when provided good input' do
       it { expect(described_class.new('karen', '100', '1231231234')).to be_an_instance_of(Account) }
     end

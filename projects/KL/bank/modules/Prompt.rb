@@ -1,3 +1,7 @@
+# Show messages to users
+
+# frozen_string_literal: true
+
 module Prompt
   def show_start_message
     puts 'Hello, Would you like to create an account? (Y/n)'

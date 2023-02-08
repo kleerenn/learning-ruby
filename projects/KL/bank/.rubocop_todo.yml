@@ -29,22 +29,6 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 14
 
-# Offense count: 4
-# Configuration parameters: ExpectMatchingDefinition, CheckDefinitionPathHierarchy, CheckDefinitionPathHierarchyRoots, Regex, IgnoreExecutableScripts, AllowedAcronyms.
-# CheckDefinitionPathHierarchyRoots: lib, spec, test, src
-# AllowedAcronyms: CLI, DSL, ACL, API, ASCII, CPU, CSS, DNS, EOF, GUID, HTML, HTTP, HTTPS, ID, IP, JSON, LHS, QPS, RAM, RHS, RPC, SLA, SMTP, SQL, SSH, TCP, TLS, TTL, UDP, UI, UID, UUID, URI, URL, UTF8, VM, XML, XMPP, XSRF, XSS
-Naming/FileName:
-  Exclude:
-    - 'classes/Account.rb'
-    - 'modules/Executor.rb'
-    - 'modules/Prompt.rb'
-    - 'modules/Utilities.rb'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Style/BlockComments:
-  Exclude:
-    - 'spec/spec_helper.rb'
 
 # Offense count: 4
 # Configuration parameters: AllowedConstants.
@@ -56,20 +40,6 @@ Style/Documentation:
     - 'modules/Executor.rb'
     - 'modules/Prompt.rb'
     - 'modules/Utilities.rb'
-
-# Offense count: 7
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, always_true, never
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'classes/Account.rb'
-    - 'modules/Executor.rb'
-    - 'modules/Prompt.rb'
-    - 'modules/Utilities.rb'
-    - 'spec/classes/account_spec.rb'
-    - 'spec/spec_helper.rb'
-    - 'src/main.rb'
 
 # Offense count: 9
 # Configuration parameters: AllowedVariables.
