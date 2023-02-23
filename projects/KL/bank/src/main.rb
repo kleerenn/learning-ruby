@@ -5,19 +5,19 @@ require '../modules/utilities'
 require '../modules/executor'
 require '../classes/account'
 
-include utilities
-include prompt
-include executor
+include Utilities
+include Prompt
+include Executor
 
 $accounts = []
 $account
 
 # TODO: Find a better place for this
 def create_account(name, balance, ssn)
-  valid_balance = utilities.validate_balance(balance)
-  valid_ssn = utilities.validate_ssn(ssn)
+  valid_balance = validate_balance(balance)
+  valid_ssn = validate_ssn(ssn)
   if !valid_balance || !valid_ssn
-    prompt.show_invalid_message
+    show_invalid_message
     return
   end
   $account = account.new(name, balance, ssn)
@@ -25,15 +25,15 @@ def create_account(name, balance, ssn)
 end
 
 # Start here
-prompt.show_start_message
+show_start_message
 
 option = gets.chomp.downcase
-executor.option_for_new_user(option)
+option_for_new_user(option)
 
 loop do
   prompt.show_menu_for_user
   bank_menu = gets.chomp[0, 1].downcase
   break if bank_menu == 'q'
 
-  executor.option_for_user(bank_menu)
+  option_for_user(bank_menu)
 end
