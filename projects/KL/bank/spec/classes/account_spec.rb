@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../../classes/Account'
-require_relative '../../modules/Utilities'
+require_relative '../../classes/account'
+require_relative '../../modules/utilities'
 
 puts 'hello!'
 

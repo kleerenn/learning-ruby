@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # Reusable functions
-
 module Utilities
   def validate_balance(balance)
     valid = true

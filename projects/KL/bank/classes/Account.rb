@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
+require_relative '../modules/utilities'
+require_relative '../modules/prompt'
+
 # Bank account management class
-
-require '../modules/utilities'
-require '../modules/prompt'
-
-include utilities
-include prompt
-
 class Account
+  include Utilities
+  include Prompt
+
   attr_accessor :name, :balance, :ssn, :id
 
   def initialize(name, balance, ssn)
@@ -19,18 +18,18 @@ class Account
   end
 
   def add_balance(balance)
-    valid = utilities.validate_balance(balance)
+    valid = validate_balance(balance)
     unless valid
-      prompt.show_invalid_message
+      show_invalid_message
       return
     end
     @balance += balance
   end
 
   def withdrawl_balance(balance)
-    valid = utilities.validate_balance(balance)
+    valid = validate_balance(balance)
     unless valid
-      pPrompt.show_invalid_message
+      show_invalid_message
       return
     end
     @balance -= balance
